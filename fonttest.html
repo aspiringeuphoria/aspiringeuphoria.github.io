@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>font test</title>
+<style>
+body{margin:0;padding:16px;background:#111;color:#c2ec5a;font:16px/1.5 Menlo,Courier,monospace}
+h1{font-size:18px;margin:0 0 12px}
+pre{white-space:pre-wrap;word-break:break-word;margin:0 0 16px;padding:10px;border:1px solid #4a6a20}
+.sample{font-size:28px;margin:8px 0 16px}
+#a{font-family:"TestNouveau",monospace}
+#b{font-family:monospace}
+</style>
+</head>
+<body>
+<h1>Nouveau IBM font test</h1>
+<pre id="report">running...</pre>
+<div>Should be the pixel font (A):</div>
+<div class="sample" id="a">aspiringeuphoria.OS C:\&gt;dir</div>
+<div>Plain monospace for comparison (B):</div>
+<div class="sample" id="b">aspiringeuphoria.OS C:\&gt;dir</div>
+<script>
+(async function(){
+  const out=[],URL_="Nouveau_IBM.ttf",log=s=>{out.push(s);document.getElementById("report").textContent=out.join("\n")};
+  log("page: "+location.href);
+  log("browser: "+navigator.userAgent);
+  // 1. can the page fetch the file, and what is in it?
+  try{
+    const r=await fetch(URL_,{cache:"no-store"});
+    log("fetch status: "+r.status+" "+r.statusText);
+    log("content-type: "+(r.headers.get("content-type")||"(none)"));
+    const buf=await r.arrayBuffer(),b=new Uint8Array(buf);
+    log("size: "+buf.byteLength+" bytes");
+    const hex=[...b.slice(0,4)].map(x=>x.toString(16).padStart(2,"0")).join(" "),txt=String.fromCharCode(...b.slice(0,4));
+    log("first 4 bytes: "+hex+"  ("+JSON.stringify(txt)+")");
+    const kind=hex==="00 01 00 00"||txt==="true"?"TrueType (OK)":txt==="OTTO"?"OpenType/CFF":txt==="wOFF"?"WOFF":txt==="wOF2"?"WOFF2":txt==="ttcf"?"font collection (.ttc)":/^vers/.test(txt)?"TEXT (looks like a Git LFS pointer, not a font)":txt==="<!DO"||txt==="<htm"?"HTML page (404 or wrong file)":"unrecognised";
+    log("looks like: "+kind);
+  }catch(e){log("fetch failed: "+e)}
+  // 2. will this browser actually accept it as a font?
+  try{
+    const f=new FontFace("TestNouveau","url("+URL_+")");
+    await f.load();document.fonts.add(f);
+    log("FontFace load: SUCCESS - browser accepted the font");
+  }catch(e){log("FontFace load: FAILED - "+(e&&e.message||e))}
+})();
+</script>
+</body>
+</html>
