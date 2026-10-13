@@ -47,12 +47,18 @@
 [data-theme=orange]{--fg:#ff8c40;--fg-hot:#ffd3ae;--dim:#aa5c26;--line:#d4742f;--bg:#0a0502;--glow:rgba(255,130,50,.5);--glow-soft:rgba(255,110,30,.26);--flash:#e0651a;--rgb:255,140,64;--bg-hi:#1a0e06;--bg-mid:#0c0603;--bg-lo:#040201}
 [data-theme=white]{--fg:#e9f1ff;--fg-hot:#ffffff;--dim:#8995ae;--line:#aebad3;--bg:#05060a;--glow:rgba(220,235,255,.42);--glow-soft:rgba(200,220,255,.22);--flash:#cfd8ec;--rgb:233,241,255;--bg-hi:#101216;--bg-mid:#08090b;--bg-lo:#030304}
 
+[data-theme=copper]{--fg:#d98a54;--fg-hot:#ffd9b0;--dim:#8f5c33;--line:#c17a43;--bg:#0a0502;--glow:rgba(217,138,84,.5);--glow-soft:rgba(200,120,60,.26);--flash:#b5661f;--rgb:217,138,84;--bg-hi:#1c0f06;--bg-mid:#0d0703;--bg-lo:#040201}
+[data-theme=crimson]{--fg:#ff2f52;--fg-hot:#ffa8b8;--dim:#a32238;--line:#c93752;--bg:#0a0203;--glow:rgba(255,47,82,.5);--glow-soft:rgba(255,30,60,.26);--flash:#c41d3c;--rgb:255,47,82;--bg-hi:#1b060a;--bg-mid:#0c0305;--bg-lo:#040102}
+[data-theme=royal]{--fg:#5d6dff;--fg-hot:#c3caff;--dim:#3b45ad;--line:#5160d6;--bg:#03040a;--glow:rgba(93,109,255,.5);--glow-soft:rgba(70,85,255,.26);--flash:#3340c9;--rgb:93,109,255;--bg-hi:#0a0c1e;--bg-mid:#05060f;--bg-lo:#020205}
+[data-theme=steel]{--fg:#a9c2cf;--fg-hot:#e4f1f6;--dim:#5f7781;--line:#85a1ac;--bg:#060a0b;--glow:rgba(169,194,207,.42);--glow-soft:rgba(150,180,195,.22);--flash:#7693a0;--rgb:169,194,207;--bg-hi:#121a1c;--bg-mid:#090e0f;--bg-lo:#030405}
+[data-theme=lava]{--fg:#ff5a1f;--fg-hot:#ffb37a;--dim:#a83c12;--line:#d4581f;--bg:#0a0301;--glow:rgba(255,90,31,.5);--glow-soft:rgba(255,70,15,.26);--flash:#d8440c;--rgb:255,90,31;--bg-hi:#1c0a03;--bg-mid:#0d0502;--bg-lo:#040100}
+
 /* alternate phosphors — the same CRT system, with stranger tubes */
 [data-theme=slime]{--fg:#dfff39;--fg-hot:#f4ffb0;--dim:#90aa20;--line:#bdde2f;--bg:#090b02;--glow:rgba(223,255,57,.55);--glow-soft:rgba(203,240,40,.28);--flash:#c7e921;--rgb:223,255,57;--bg-hi:#171c06;--bg-mid:#0d1003;--bg-lo:#030401}
-[data-theme=bubblegum]{--fg:#ff8ac9;--fg-hot:#ffd1ea;--dim:#a74d80;--line:#d96ca9;--bg:#0b0308;--glow:rgba(255,138,201,.54);--glow-soft:rgba(255,105,185,.28);--flash:#df4f9d;--rgb:255,138,201;--bg-hi:#1c0916;--bg-mid:#0f0510;--bg-lo:#040103}
+[data-theme=hyper]{--fg:#ff8ac9;--fg-hot:#ffd1ea;--dim:#a74d80;--line:#d96ca9;--bg:#0b0308;--glow:rgba(255,138,201,.54);--glow-soft:rgba(255,105,185,.28);--flash:#df4f9d;--rgb:255,138,201;--bg-hi:#1c0916;--bg-mid:#0f0510;--bg-lo:#040103}
 [data-theme=ocean]{--fg:#54ffe6;--fg-hot:#b9fff5;--dim:#349f91;--line:#45d1bf;--bg:#020a0a;--glow:rgba(84,255,230,.52);--glow-soft:rgba(55,235,210,.28);--flash:#22d4bd;--rgb:84,255,230;--bg-hi:#061a18;--bg-mid:#030e0d;--bg-lo:#010403}
 [data-theme=plasma]{--fg:#d89aff;--fg-hot:#f0d1ff;--dim:#8d5aad;--line:#b878df;--bg:#08030d;--glow:rgba(216,154,255,.54);--glow-soft:rgba(195,120,245,.28);--flash:#a956dc;--rgb:216,154,255;--bg-hi:#16091e;--bg-mid:#0c0511;--bg-lo:#030105}
-[data-theme=sunburst]{--fg:#ffca3a;--fg-hot:#ffeaa4;--dim:#aa7920;--line:#de9f27;--bg:#0b0701;--glow:rgba(255,202,58,.54);--glow-soft:rgba(255,180,35,.28);--flash:#e99a16;--rgb:255,202,58;--bg-hi:#1d1404;--bg-mid:#100a02;--bg-lo:#040301}
+[data-theme=sol]{--fg:#ffca3a;--fg-hot:#ffeaa4;--dim:#aa7920;--line:#de9f27;--bg:#0b0701;--glow:rgba(255,202,58,.54);--glow-soft:rgba(255,180,35,.28);--flash:#e99a16;--rgb:255,202,58;--bg-hi:#1d1404;--bg-mid:#100a02;--bg-lo:#040301}
 
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#000;overflow:hidden}
@@ -191,9 +197,20 @@ body.site #boot{display:none}
 #site .np .tbl{max-width:70vw;margin:0}
 #site .np .tbl .r{grid-template-columns:14ch minmax(0,1fr) 9ch}
 #site .np .live{animation:blink 1s steps(1) infinite}
+/* red "on air" dot: hidden for 2s after the row renders, then blinks in step with LIVE */
+#site .np .rec{display:inline-block;width:.62em;height:.62em;margin-right:.8ch;border-radius:50%;background:#ff3b30;box-shadow:0 0 .45em #ff3b30,0 0 .9em rgba(255,59,48,.55);vertical-align:.04em;opacity:0;animation:recBlink 1s steps(1) 2s infinite}
+@keyframes recBlink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){#site .np .rec{animation:none;opacity:1}}
 #site .tbl{max-width:60vw;margin:.6em 0 .9em}
 #site .tbl .r{display:grid;grid-template-columns:4ch minmax(0,1fr) 7ch;gap:0 2ch;padding:0 1.2ch;min-height:1.7em;align-items:center}
 #site .tbl .hdr{color:var(--dim)}
+#site .tbl .hdr.np-hdr{color:color-mix(in srgb,var(--dim) 60%,var(--fg) 40%)}
+#site .idle .d{display:inline-block;width:.24em;height:.24em;margin-left:.42ch;vertical-align:baseline;background:var(--fg);opacity:.2;box-shadow:0 0 .3em var(--glow);animation:dotStep 3.2s steps(1) infinite}
+#site .idle .d:nth-child(2){animation-delay:.8s}
+#site .idle .d:nth-child(3){animation-delay:1.6s}
+#site .idle .d:nth-child(4){animation-delay:2.4s}
+@keyframes dotStep{0%,25%{opacity:1}26%,100%{opacity:.2}}
+#site .lbl{color:color-mix(in srgb,var(--dim) 60%,var(--fg) 40%)}
 #site .tbl .body{border:1px solid var(--line);box-shadow:0 0 .4em var(--glow-soft)}
 #site .tbl .r small{display:block;color:color-mix(in srgb,var(--dim) 30%,var(--fg));font-size:.9em;line-height:1.3;letter-spacing:.06em;text-shadow:none}
 #site .tbl .r+.r{border-top:1px solid color-mix(in srgb,var(--line) 35%,transparent)}
@@ -212,12 +229,22 @@ body.site #boot{display:none}
 #site .pb{height:.7em;border:1px solid var(--line);max-width:22ch;margin:.4em 0}
 #site .pb i{display:block;height:100%;width:0;background:var(--fg)}
 #site #row{display:flex;gap:0;align-items:center;margin-top:.2em}
-#site #in{flex:1;min-width:0;background:none;border:0;outline:0;color:inherit;font:inherit;letter-spacing:inherit;text-shadow:inherit;caret-color:var(--fg);padding:0;margin:0}
+#site #inwrap{position:relative;flex:1;min-width:0}
+#site #in{width:100%;background:none;border:0;outline:0;color:inherit;font:inherit;letter-spacing:inherit;text-shadow:inherit;caret-color:transparent;padding:0;margin:0}
+#site #bcur{position:absolute;left:0;top:.08em;width:.58ch;height:1.05em;background:var(--fg);box-shadow:0 0 .4em var(--glow);pointer-events:none;animation:barBlink 1.05s steps(1) infinite}
+@keyframes barBlink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
 #site #chips{margin-top:1.4em;color:var(--dim);display:flex;flex-wrap:wrap;gap:0 2ch}
 #site .err{color:var(--fg-hot)}
 #site .th .sw{display:inline-block;width:2.2ch;height:.9em;margin-right:1.2ch;vertical-align:-.1em;box-shadow:0 0 .5em currentColor}
 #site .spc{height:.8em}
 #site .gk.th{grid-template-columns:16ch minmax(0,1fr)}
+#site .tbl.themes{max-width:62vw;columns:2;column-gap:2.4ch}
+#site .tbl.themes .body{border:none;box-shadow:none;break-inside:avoid}
+#site .tbl.themes .r{grid-template-columns:3ch minmax(0,13ch) 1fr;padding:0 1.2ch;border:1px solid var(--line);box-shadow:0 0 .4em var(--glow-soft);margin-bottom:-1px}
+#site .tbl.themes .r.active{background:var(--bar);color:var(--bar-txt);text-shadow:none;filter:none}
+#site .tbl.themes .r.active .dim{color:var(--bar-txt)}
+#site .tbl.themes .sw{width:1.3em;height:1.3em;box-shadow:0 0 .5em currentColor,inset 0 0 .25em rgba(0,0,0,.4)}
+@media (max-width:720px),(orientation:portrait){#site .tbl.themes{columns:1;max-width:none}}
 #site .out{animation:rowIn .192s steps(3) both}
 body.site #frame.vsync #screen{animation:vsync .192s steps(2)}
 
@@ -234,7 +261,7 @@ body.site #skip{display:none}
   #dev .box:before{left:calc(20 / 52 * 100%)}#dev .box:after{left:calc(34 / 52 * 100%)}
   #dev .c1{left:calc(2 * var(--ux))}#dev .c2{left:calc(22 * var(--ux))}#dev .c3{left:calc(36 * var(--ux))}
   #dirgrid{grid-template-rows:repeat(9,calc(2.36 * var(--u)))}
-  #dirgrid .f:nth-child(n+19){display:none}
+  #dirgrid .f:nth-child(n+10){display:none}   /* phone: one column only, the second one ran off the edge */
   .rule{width:calc(52 * var(--ux))!important}
   #site{padding:calc(6vw + env(safe-area-inset-top,0px)) calc(5vw + env(safe-area-inset-right,0px)) calc(14vh + env(safe-area-inset-bottom,0px)) calc(5vw + env(safe-area-inset-left,0px));font-size:calc(clamp(13px,3.6vw,20px) * var(--fk))}
   #site .dim,#site #chips,#site .tbl .hdr{color:color-mix(in srgb,var(--dim) 55%,var(--fg))}
@@ -269,17 +296,17 @@ body.site #skip{display:none}
 
 /* groovy modes: gradient sits behind #screen (outside the CRT filter) so the text keeps its bloom/blur */
 html[data-theme=slime]{--grad:linear-gradient(120deg,#b5d737 0%,#315f13 42%,#061406 78%,#142c09 100%);--gd:12s}
-html[data-theme=bubblegum]{--grad:linear-gradient(120deg,#dd63aa 0%,#7951c3 34%,#3aa6b8 66%,#1c0b25 100%);--gd:15s}
+html[data-theme=hyper]{--grad:linear-gradient(120deg,#dd63aa 0%,#7951c3 34%,#3aa6b8 66%,#1c0b25 100%);--gd:15s}
 html[data-theme=ocean]{--grad:linear-gradient(120deg,#43cfd5 0%,#3f70ca 34%,#8053bd 68%,#0b1735 100%);--gd:11s}
 html[data-theme=plasma]{--grad:linear-gradient(120deg,#ad65d1 0%,#df598d 28%,#d7b636 57%,#3fa994 78%,#17091f 100%);--gd:16s}
-html[data-theme=sunburst]{--grad:linear-gradient(120deg,#d6a029 0%,#dc702d 28%,#ca4f88 58%,#4d77bd 79%,#1f0a10 100%);--gd:13s}
+html[data-theme=sol]{--grad:linear-gradient(120deg,#d6a029 0%,#dc702d 28%,#ca4f88 58%,#4d77bd 79%,#1f0a10 100%);--gd:13s}
 
 #frame::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0}
 html[data-theme=slime] #frame::before,
-html[data-theme=bubblegum] #frame::before,
+html[data-theme=hyper] #frame::before,
 html[data-theme=ocean] #frame::before,
 html[data-theme=plasma] #frame::before,
-html[data-theme=sunburst] #frame::before{
+html[data-theme=sol] #frame::before{
   opacity:1;background-image:var(--grad);background-size:260% 260%;background-position:0% 50%;background-repeat:no-repeat;
   animation:grooveGradient var(--gd,14s) ease-in-out infinite alternate}
 @keyframes grooveGradient{0%{background-position:0% 50%}100%{background-position:100% 50%}}
@@ -345,10 +372,27 @@ html[data-fx=flat] #screen.gl{
   text-shadow:-.16em 0 0 rgba(255,50,50,.55),.16em 0 0 rgba(50,255,255,.5),0 0 .3em var(--glow)}
 html[data-fx=flat] .roll{filter:none}
 html[data-fx=flat] #site .dim,html[data-fx=flat] #site .tbl .hdr,html[data-fx=flat] #dev .hd,html[data-fx=flat] .bar i{text-shadow:0 0 .22em var(--glow-soft)}
+
+/* ───────── extra tube character: deeper scanlines, bowed corners, faint chroma fringe, bezel ───────── */
+body.site #frame{border-radius:1.4cqh/2.2cqw;overflow:hidden}
+.grid{background:
+  repeating-linear-gradient(0deg,rgba(0,0,0,.55) 0 1px,rgba(0,0,0,.14) 1px 2px,transparent 2px 4px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.03) 0 1px,transparent 1px 4px);mix-blend-mode:multiply}
+.vig{background:radial-gradient(ellipse at 50% 48%,transparent 38%,rgba(0,0,0,.3) 66%,rgba(0,0,0,.95) 100%);
+  box-shadow:inset 0 0 7cqw #000,inset 0 0 1.6cqw #000,inset 0 0 .4cqw rgba(0,0,0,.9)}
+.rgb{display:block!important;opacity:.07;background:repeating-linear-gradient(90deg,rgba(255,30,30,.05) 0 1px,rgba(40,255,90,.035) 1px 2px,rgba(30,70,255,.05) 2px 3px);mix-blend-mode:screen}
+.flick{opacity:.14}
+#screen{text-shadow:.045em 0 0 var(--glow-soft),0 0 .32em var(--glow),0 0 .85em var(--glow)}
+html[data-fx=lite] #screen,html[data-fx=flat] #screen{text-shadow:.15em 0 0 rgba(var(--rgb),.24),.045em 0 0 var(--glow-soft),0 0 .32em var(--glow),0 0 .85em var(--glow),0 0 1.6em var(--glow-soft)}
+/* corner bow: the tube curves away from the viewer at the edges */
+#frame::after{content:"";position:absolute;inset:0;z-index:7;pointer-events:none;
+  background:radial-gradient(ellipse 140% 120% at 50% 50%,transparent 62%,rgba(0,0,0,.5) 100%)}
+@media (prefers-reduced-motion:reduce){.flick{animation:none;opacity:.08}}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="gl" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.002 0.06" numOctaves="1" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<filter id="gl" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.002 0.06" numOctaves="1" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="crt" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
   <feGaussianBlur in="SourceGraphic" stdDeviation="1.4 0" result="hb" id="hb1"/>
   <feOffset in="hb" dx="4" dy="0" result="tr" id="tr1"/>
@@ -402,7 +446,7 @@ html[data-fx=flat] #site .dim,html[data-fx=flat] #site .tbl .hdr,html[data-fx=fl
 
       <main id="site" aria-live="polite">
 <div id="out"></div>
-<label id="row"><span class="ps">C:\&gt;</span><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Type a command"></label>
+<label id="row"><span class="ps">C:\&gt;</span><span id="inwrap"><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Type a command"><span id="bcur" aria-hidden="true"></span></span></label>
           </main>
     </div>
 
@@ -418,6 +462,29 @@ html[data-fx=flat] #site .dim,html[data-fx=flat] #site .tbl .hdr,html[data-fx=fl
 <script>
 "use strict";
 const $=s=>document.querySelector(s),frame=$("#frame"),reduced=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* ───────── 90s-IBM-tube sound effects, synthesized live (no audio files) ───────── */
+const SFX=(()=>{
+  let ctx,master,unlocked=false;
+  const ensure=()=>{
+    if(!ctx){ctx=new (window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=.55;master.connect(ctx.destination)}
+    if(ctx.state==="suspended")ctx.resume();
+    unlocked=true;return ctx};
+  function select(){ // confirm chirp on click: quick upward two-step blip
+    if(!unlocked)return;try{const c=ensure(),now=c.currentTime;
+      [[0,900],[.045,1500]].forEach(([t,f])=>{const o=c.createOscillator(),g=c.createGain();o.type="square";o.frequency.value=f;
+        g.gain.setValueAtTime(.06,now+t);g.gain.exponentialRampToValueAtTime(.0001,now+t+.045);
+        o.connect(g);g.connect(master);o.start(now+t);o.stop(now+t+.05)})}catch(e){}}
+  function hover(){ // soft old-UI nav blip
+    if(!unlocked)return;try{const c=ensure(),o=c.createOscillator(),g=c.createGain();
+      o.type="sine";o.frequency.value=1500;
+      g.gain.setValueAtTime(.0001,c.currentTime);g.gain.linearRampToValueAtTime(.035,c.currentTime+.006);
+      g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.05);
+      o.connect(g);g.connect(master);o.start();o.stop(c.currentTime+.06)}catch(e){}}
+  addEventListener("pointerdown",ensure,{once:true});
+  addEventListener("keydown",ensure,{once:true});
+  return{hover,select};
+})();
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const pad=(n,l=2)=>String(n).padStart(l,"0");
 const SLOW=1.2;   // global animation speed: 1.2 = 20% slower
@@ -432,8 +499,8 @@ function redraw(ms=400){
   clearTimeout(redraw.t);redraw.t=setTimeout(()=>rdEl.classList.remove("on"),ms*SLOW+60);
 }
 /* ───────── noise ───────── */
-const THEMES=["green","amber","ice","red","magenta","violet","cobalt","mint","orange","white","slime","bubblegum","ocean","plasma","sunburst"];
-const THEME_INFO={green:["P1 PHOSPHOR","#c2ec5a"],amber:["P3 AMBER","#ffbf55"],ice:["ICE BLUE","#8ee6ff"],red:["ALERT RED","#ff6a5c"],magenta:["VAPOR","#ff73e3"],violet:["ULTRAVIOLET","#b99dff"],cobalt:["COBALT","#82a0ff"],mint:["MINT","#62ffcb"],orange:["SUNSET","#ff8c40"],white:["P4 WHITE","#e9f1ff"],slime:["ELECTRIC SLIME","#dfff39"],bubblegum:["BUBBLEGUM","#ff8ac9"],ocean:["OCEAN","#54ffe6"],plasma:["PLASMA","#d89aff"],sunburst:["SUNBURST","#ffca3a"]};let theme=0,tint=[.8,1,.4];
+const THEMES=["green","amber","ice","red","magenta","violet","cobalt","mint","orange","white","copper","crimson","royal","steel","lava","slime","hyper","ocean","plasma","sol"];
+const THEME_INFO={green:["P1 PHOSPHOR","#c2ec5a"],amber:["P3 AMBER","#ffbf55"],ice:["ICE BLUE","#8ee6ff"],red:["ALERT RED","#ff6a5c"],magenta:["VAPOR","#ff73e3"],violet:["ULTRAVIOLET","#b99dff"],cobalt:["COBALT","#82a0ff"],mint:["MINT","#62ffcb"],orange:["SUNSET","#ff8c40"],white:["P4 WHITE","#e9f1ff"],copper:["COPPER","#d98a54"],crimson:["CRIMSON","#ff2f52"],royal:["ROYAL","#5d6dff"],steel:["STEEL","#a9c2cf"],lava:["LAVA","#ff5a1f"],slime:["ELECTRIC SLIME","#dfff39"],hyper:["HYPER","#ff8ac9"],ocean:["OCEAN","#54ffe6"],plasma:["PLASMA","#d89aff"],sol:["SOL","#ffca3a"]};let theme=0,tint=[.8,1,.4];
 function setTint(){const v=getComputedStyle(document.documentElement).getPropertyValue("--rgb").split(",").map(Number),m=Math.max(...v)||255;tint=v.map(n=>n/m)}
 function applyTheme(i){theme=i;document.documentElement.dataset.theme=THEMES[i];try{localStorage.setItem("phosphor",THEMES[i])}catch(e){}setTint()}
 try{const t=THEMES.indexOf(localStorage.getItem("phosphor"));if(t>0)applyTheme(t);else setTint()}catch(e){setTint()}
@@ -583,11 +650,13 @@ async function goSite(animate){
 }
 
 /* ───────── the site: a command prompt in the same screen ───────── */
-const out=$("#out"),inp=$("#in");
+const out=$("#out"),inp=$("#in"),bcur=$("#bcur");
+const posCur=()=>{if(bcur)bcur.style.left=(inp.selectionStart||0)+"ch"};
+["input","keyup","click","select","focus"].forEach(t=>inp.addEventListener(t,posCur));
 let hist=[],hi=0,musicStart=Date.now(),page="home";
 const add=(html,cls="")=>{const n=document.createElement("div");n.className="ln out "+cls;n.innerHTML=html;out.append(n);return n};
 const cmd=n=>`<a class="cmd" data-c="${n}" tabindex="0">${n}</a>`;
-const FILE_LIST=[["ABOUT","COM"],["WORK","EXE"],["LAB","BAS"],["NOW","EXE"],["CONTACT","COM"],["THEME","COM"],["HELP","COM"],["CLEAR","BAT"]];
+const FILE_LIST=[["ABOUT","COM"],["WORK","EXE"],["LAB","BAS"],["CONTACT","COM"],["THEME","COM"],["HELP","COM"],["CLEAR","BAT"]];
 const dirHTML=()=>`<span class="rl"></span><div class="dir">${FILE_LIST.map(([n,e])=>`<a class="cmd" data-c="${n==="THEME"?"themes":n.toLowerCase()}" tabindex="0"><span style="display:inline-block;min-width:14ch">${n}</span>${e}</a>`).join("")}</div><span class="rl"></span>`;
 /* ============================================================
    EDIT YOUR CONTENT HERE — WORK and LAB listings
@@ -598,7 +667,7 @@ const dirHTML=()=>`<span class="rl"></span><div class="dir">${FILE_LIST.map(([n,
    ============================================================ */
 const PROJECTS={
   work:[
-    {id:"project-alpha",no:"01",name:"project-alpha",blurb:"a short line about what it is and why",year:"2026",tree:`project-alpha/
+    {id:"day-dreamer",no:"01",name:"day-dreamer",blurb:"a photo-series dedicated to dreamers",year:"2026",tree:`project-alpha/
 ├── <span class="muted">brief.txt</span>
 ├── <span class="muted">notes/</span>
 │   ├── <span class="muted">process.txt</span>
@@ -657,14 +726,21 @@ async function lbNow(){
 }
 function npHTML(s){
   const [st,main,sub,cls]=s.state==="live"?["LIVE",s.track,"by "+s.artist,"live"]
-    :s.state==="idle"?["IDLE",s.track?"last: "+s.track:"nothing played yet",s.track?s.artist+" · "+ago(s.at):"",""]
+    :s.state==="idle"?[`<span class="idle">IDLE<span class="d"></span><span class="d"></span><span class="d"></span><span class="d"></span></span>`,s.track?"last: "+s.track:"nothing played yet",s.track?s.artist+" · "+ago(s.at):"",""]
     :s.state==="off"?["OFFLINE","signal lost","retrying...",""]:["SCAN","tuning...","",""];
   const source=s.state==="live"?"APPLE_MUSIC":"APPLE_MUSIC";
-  return `<div class="tbl"><div class="r hdr"><span>SOURCE</span><span>NOW PLAYING</span><span>STATUS</span></div><div class="body"><div class="r"><span>${source}</span><span>${esc(main)}<small>${esc(sub)}</small></span><span class="${cls}">${st}</span></div></div></div>`;
+  return `<div class="tbl"><div class="r hdr np-hdr"><span>SOURCE</span><span>NOW PLAYING</span><span>STATUS</span></div><div class="body"><div class="r"><span>${source}</span><span>${esc(main)}<small>${esc(sub)}</small></span>${s.state==="live"?`<span><i class="rec"></i><span class="live">LIVE</span></span>`:`<span>${st}</span>`}</div></div></div>`;
 }
-async function refreshNow(){np=await lbNow();document.querySelectorAll(".np").forEach(e=>e.innerHTML=npHTML(np))}
+async function refreshNow(){
+  const prev=np;np=await lbNow();
+  if(prev.state==="live"&&np.state==="live"&&prev.track===np.track&&prev.artist===np.artist)return;
+  document.querySelectorAll(".np").forEach(e=>e.innerHTML=npHTML(np));
+}
 setInterval(()=>{if(document.body.classList.contains("site")&&!document.hidden)refreshNow()},30000);
-const themesPage=()=>`<div class="dim">PHOSPHOR TYPES &nbsp;·&nbsp; SELECT ONE OR TYPE <span style="color:var(--fg)">theme name</span></div><div class="spc"></div>`+THEMES.map(n=>`<div class="gk th">${cmd("theme "+n).replace(">theme "+n+"<",`><span class="sw" style="background:${THEME_INFO[n][1]}"></span>${n}<`)}<span class="${THEMES[theme]===n?"":"dim"}">${THEME_INFO[n][0]}${THEMES[theme]===n?"  &lt;- ACTIVE":""}</span></div>`).join("");
+const themesPage=()=>`<div class="dim">PHOSPHOR TYPES &nbsp;·&nbsp; SELECT ONE OR TYPE <span style="color:var(--fg)">theme name</span></div><div class="spc"></div>`+
+  `<div class="tbl themes"><div class="body">`+THEMES.map(n=>{const active=THEMES[theme]===n;
+    return `<div class="r${active?" active":""}"><span class="sw" style="background:${THEME_INFO[n][1]}"></span>${cmd("theme "+n)}<span class="${active?"":"dim"}">${THEME_INFO[n][0]}${active?"  &lt;- ACTIVE":""}</span></div>`;
+  }).join("")+`</div></div>`;
 const commands={
   help:()=>`<div class="dim">AVAILABLE COMMANDS</div>`+[["about","who is behind this"],["work","selected projects"],["lab","experiments"],["now","what is playing"],["contact","say hello"],["theme","cycle the phosphor"],["themes","pick a phosphor"],["back","return to the main screen"]].map(([n,d])=>`<div class="gk">${cmd(n)}<span class="dim">${d}</span></div>`).join(""),
   about:()=>`<div>Brenden Toles builds small, strange, useful things.</div><div class="dim">Selected work, experiments, and whatever is playing right now.</div>`,
@@ -683,14 +759,24 @@ let noteEl=null;
 const note=(html,cls="")=>{noteEl?.remove();noteEl=add(html,cls)};
 const pop=()=>{frame.classList.remove("pop");void frame.offsetWidth;frame.classList.add("pop");redraw(400);setTimeout(()=>frame.classList.remove("pop"),460*SLOW)};
 
+/* live clock in the top-left: date as MM/DD/YYYY, time ticking every second */
+const DAYS=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function tickClock(){
+  const a=$("#clkd"),b=$("#clkt");if(!a||!b)return;
+  const d=new Date();
+  a.textContent=`${DAYS[d.getDay()]} ${pad(d.getMonth()+1)}/${pad(d.getDate())}/${d.getFullYear()}`;
+  b.textContent=`${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+}
+setInterval(()=>{if(!document.hidden)tickClock()},1000);
+
 /* every command is its own screen: the tube blips and the new page pops in */
 async function go(name,quiet){
   page=name;noteEl=null;if(!quiet)pop();
   out.innerHTML="";$("#site").scrollTop=0;
   if(name==="home"){
-    const d=new Date(),days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-    add(`Date is ${days[d.getDay()]} ${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()}`);
-    add(`Time is ${pad(d.getHours())}:${pad(d.getMinutes())}`);
+    add(`Date is <span id="clkd"></span>`);
+    add(`Time is <span id="clkt"></span>`);
+    tickClock();
     add(`<span class="sp"></span>`);
     add(`aspiringeuphoria.OS Terminal System<br>Version 1.02`,"hd2");
     {const w=document.createElement("div");w.className="cornerwrap";w.setAttribute("aria-hidden","true");const lg=document.createElement("pre");lg.className="logo";lg.textContent=LOGO;w.append(lg);out.append(w)}
@@ -699,7 +785,7 @@ async function go(name,quiet){
     add(`<div class="gap"></div>`);
     add(`<span class="ps">C:\\&gt;</span>dir/w`);
     add(dirHTML());
-    add(`<span class="dim">TYPE</span> ${cmd("help")} <span class="dim">OR SELECT A FILE.</span>`);
+    add(`<span class="lbl">TYPE</span> ${cmd("help")} <span class="lbl">OR SELECT A FILE.</span>`);
   }else{
     add(`<span class="ps">C:\\&gt;</span>${name}`);
     const slot=add(`<span class="dim">LOADING...</span>`);
@@ -732,8 +818,12 @@ inp.addEventListener("keydown",e=>{
   else if(e.key==="ArrowUp"){if(hi>0)inp.value=hist[--hi]||"";e.preventDefault()}
   else if(e.key==="ArrowDown"){hi=Math.min(hi+1,hist.length);inp.value=hist[hi]||"";e.preventDefault()}
   else if(e.key==="Tab"){const m=[...Object.keys(commands),"back","theme"].find(n=>n.startsWith(inp.value.toLowerCase()));if(m&&inp.value)inp.value=m;e.preventDefault()}
+  requestAnimationFrame(posCur);
 });
-document.addEventListener("click",e=>{const project=e.target.closest("[data-project-toggle]");if(project){const panel=$("#"+project.getAttribute("aria-controls")),open=project.getAttribute("aria-expanded")==="true";project.setAttribute("aria-expanded",String(!open));panel.classList.toggle("open",!open);return}const l=e.target.closest("[data-c]");if(l){e.preventDefault();run(l.dataset.c);focusIn()}else if(document.body.classList.contains("site")&&!getSelection().toString())focusIn()});
+let lastHover=null;
+document.addEventListener("pointerover",e=>{if(e.pointerType==="touch")return;const l=e.target.closest("[data-c], #site a, [data-project-toggle]");if(l&&l!==lastHover){lastHover=l;SFX.hover()}});
+document.addEventListener("pointerout",e=>{if(lastHover&&(!e.relatedTarget||!lastHover.contains(e.relatedTarget)))lastHover=null});
+document.addEventListener("click",e=>{const project=e.target.closest("[data-project-toggle]");if(project){SFX.select();const panel=$("#"+project.getAttribute("aria-controls")),open=project.getAttribute("aria-expanded")==="true";project.setAttribute("aria-expanded",String(!open));panel.classList.toggle("open",!open);return}const l=e.target.closest("[data-c]");if(l){SFX.select();e.preventDefault();run(l.dataset.c);focusIn()}else if(document.body.classList.contains("site")&&!getSelection().toString())focusIn()});
 document.addEventListener("keydown",e=>{
   if(e.target.dataset?.c&&e.key==="Enter")run(e.target.dataset.c);
   else if(e.key==="Escape"&&document.body.classList.contains("site")&&page!=="home")go("home");
